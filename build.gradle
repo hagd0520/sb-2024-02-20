@@ -1,0 +1,64 @@
+plugins {
+    id 'java'
+    id 'org.springframework.boot' version '3.2.3'
+    id 'io.spring.dependency-management' version '1.1.4'
+}
+
+group = 'com.ll'
+version = '0.0.1-SNAPSHOT'
+
+java {
+    sourceCompatibility = '21'
+}
+
+configurations {
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    // 스프링 웹
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+
+    // 엑추에이터
+    implementation 'org.springframework.boot:spring-boot-starter-actuator'
+
+    // 스프링 JPA
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+
+    // REDIS
+    implementation 'org.springframework.boot:spring-boot-starter-data-redis'
+
+    // 스프링 시큐리티
+    implementation 'org.springframework.boot:spring-boot-starter-security'
+    testImplementation 'org.springframework.security:spring-security-test'
+
+    // 세션
+    implementation 'org.springframework.session:spring-session-jdbc'
+    implementation 'org.springframework.session:spring-session-data-redis'
+
+    // 롬복
+    compileOnly 'org.projectlombok:lombok'
+    annotationProcessor 'org.projectlombok:lombok'
+
+    // 데브툴즈
+    developmentOnly 'org.springframework.boot:spring-boot-devtools'
+
+    // H2 DB
+    runtimeOnly 'com.h2database:h2'
+
+    // MySQL 드라이버
+    runtimeOnly 'com.mysql:mysql-connector-j'
+
+    // 스프링 테스트
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}
+
+tasks.named('test') {
+    useJUnitPlatform()
+}
